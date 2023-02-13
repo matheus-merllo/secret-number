@@ -1,3 +1,7 @@
+const button = document.getElementById('play-again');
+const attemptsLeft = 10;
+const attempts = [];
+
 function validateAttempt(attempt){
     const number = parseInt(attempt);
 
@@ -9,6 +13,17 @@ function validateAttempt(attempt){
     if(numberOutOfBounds(number)) {
         elementAttempt.innerHTML += `
         <div class="text">Valor inválido! Diga um número entre ${lowerNumber} e ${higherNumber}</div>
+        `
+        return
+    }
+
+    if(gameOver(number)){
+        document.body.style.backgroundColor = 'var(--game-over-color)'
+        document.body.innerHTML = `
+        <h1 class="title">Fim de jogo!</h1>
+        <h2 class="subtitle">O número secreto era ${secretNumber}</h2>
+        <button id="play-again">Jogar novamente</button>
+        <p class="text">Aperte o botão ou diga "jogar novamente" para tentar de novo.</p>
         `
         return
     }
@@ -35,10 +50,26 @@ function numberOutOfBounds(number){
     return number > higherNumber || number < lowerNumber
 }
 
-function invalidAttempt(value){
-    return Number.isNaN(value);
+function invalidAttempt(number){
+    return Number.isNaN(number);
 }
 
+function playAgain(attempt){
+    if(attempt === 'jogar novamente'){
+        window.location.reload(); 
+    }
+}
+
+function gameOver(number){
+    attempts.push(number);
+    return attempts.length == attemptsLeft
+}
+
+document.body.addEventListener('click', (event) => {
+    if(event.target.id == 'play-again'){
+        window.location.reload();
+    }
+})
 
 
 
