@@ -9,6 +9,7 @@ recognition.addEventListener('result', onSpeak);
 function onSpeak(event){
     const attempt = (event.results[0][0].transcript);
     showAttempt(attempt);
+    validateAttempt(attempt);
 }
 
 function showAttempt(attempt){

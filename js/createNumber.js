@@ -2,6 +2,8 @@ const lowerNumber = 1;
 const higherNumber = 100;
 const secretNumber = raffleNumber();
 
+console.log(secretNumber);
+
 const elementLowerNumber = document.getElementById('lower-number');
 const elementHigherNumber = document.getElementById('higher-number');
 

@@ -41,3 +41,14 @@ body{
     font-size: 3em;
     padding: 10px;
 }
+
+#play-again{
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    font-size: 1.5em;
+    margin: 4em 0 10px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 10px 25px;
+}
