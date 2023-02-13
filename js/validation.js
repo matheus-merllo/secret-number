@@ -1,5 +1,5 @@
 const button = document.getElementById('play-again');
-const attemptsLeft = 2;
+const attemptsLeft = 10;
 const attempts = [];
 
 function validateAttempt(attempt){
