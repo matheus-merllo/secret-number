@@ -1,5 +1,5 @@
 const button = document.getElementById('play-again');
-const attemptsLeft = 10;
+const attemptsLeft = 2;
 const attempts = [];
 
 function validateAttempt(attempt){
@@ -13,17 +13,6 @@ function validateAttempt(attempt){
     if(numberOutOfBounds(number)) {
         elementAttempt.innerHTML += `
         <div class="text">Valor inválido! Diga um número entre ${lowerNumber} e ${higherNumber}</div>
-        `
-        return
-    }
-
-    if(gameOver(number)){
-        document.body.style.backgroundColor = 'var(--game-over-color)'
-        document.body.innerHTML = `
-        <h1 class="title">Fim de jogo!</h1>
-        <h2 class="subtitle">O número secreto era ${secretNumber}</h2>
-        <button id="play-again">Jogar novamente</button>
-        <p class="text">Aperte o botão ou diga "jogar novamente" para tentar de novo.</p>
         `
         return
     }
@@ -43,6 +32,17 @@ function validateAttempt(attempt){
         elementAttempt.innerHTML += `
         <div>O número secreto é menor <span class="material-symbols-outlined">arrow_downward</span></div>
         `
+    }
+
+    if(gameOver(number) && number != secretNumber){
+        document.body.style.backgroundColor = 'var(--game-over-color)'
+        document.body.innerHTML = `
+        <h1 class="title">Fim de jogo!</h1>
+        <h2 class="subtitle">O número secreto era ${secretNumber}</h2>
+        <button id="play-again">Jogar novamente</button>
+        <p class="text">Aperte o botão ou diga "jogar novamente" para tentar de novo.</p>
+        `
+        return
     }
 }
 
